@@ -1,0 +1,16 @@
+//=================================
+// aタグのカラー変更
+//=================================
+@mixin a_tag($color1, $color2) {
+
+  &:link,
+  &:active,
+  &:visited {
+    color: $color1;
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: $color2;
+  }
+}

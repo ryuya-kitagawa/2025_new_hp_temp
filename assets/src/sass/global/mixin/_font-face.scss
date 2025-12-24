@@ -1,0 +1,74 @@
+//=================================
+// font-face
+//=================================
+
+@mixin font-face($family, $path, $weight: normal, $style: normal, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($family, ' ', '_'),
+  );
+
+$formats: (
+  otf: 'opentype',
+  ttf: 'truetype',
+);
+
+@each $ext in $exts {
+  // --- if() 関数（deprecated）を @if に置き換え ---
+  $extmod: $ext;
+
+  @if map-has-key($extmods, $ext) {
+    $extmod: $ext + map-get($extmods, $ext);
+  }
+
+  $format: $ext;
+
+  @if map-has-key($formats, $ext) {
+    $format: map-get($formats, $ext);
+  }
+
+  $src: append($src,
+      url(quote($path + "." + $extmod)) format(quote($format)),
+    comma);
+}
+
+@font-face {
+  font-family: quote($family);
+  font-style: $style;
+  font-weight: $weight;
+  src: $src;
+}
+}
+
+
+//=================================
+// usage
+//=================================
+// 1.第1引数にフォント名(font-family)を指定
+// 2.第2引数にフォントファイルへの相対パスを指定
+// 3.第3引数に文字の太さ(font-weight)を指定
+// 4.第4引数に書体(font-style)を指定
+// 5.第5引数に対応するフォントファイルの拡張子を指定
+// --------------------------------
+// @include font-face('Lora', 'fonts/Lora', 400, italic, ttf);
+// @include font-face('Samplinal', 'fonts/Samplinal', bold, normal, eot woff2 woff);
+// --------------------------------
+
+//=================================
+// output
+//=================================
+// @font-face {
+//   font-family: 'Lora';
+//   font-style: italic;
+//   font-weight: 400;
+//   src: url('fonts/Lora.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Samplinal';
+//   font-style: normal;
+//   font-weight: bold;
+//   src: url('fonts/Samplinal.eot?') format('eot'), url('fonts/Samplinal.woff2') format('woff2'), url('fonts/Samplinal.woff') format('woff');
+// }

@@ -1,0 +1,42 @@
+@use "../../global" as g;
+// ======================================================================
+// single-column-header
+// ======================================================================
+
+.l-wrapper {
+  background: #F2F2F3;
+  color: #2c2c2c;
+
+  .l-main {
+    .l-contents {
+      .l-sec {
+        margin: calc(100vw * 200 / 1920) 0 0;
+        padding-inline: calc(100vw * 200 / 1920);
+
+        @include g.sp {
+          margin: calc(100vw * 50 / 375) 0 0;
+          padding-inline: calc(100vw * 16 / 375);
+        }
+      }
+
+      .l-lower-mv {
+        position: relative;
+        // height: 500px;
+
+        picture {
+
+          source,
+          img {
+            width: 100%;
+            height: calc(100vw * 500 / 1920);
+            object-fit: cover;
+
+            @include g.sp {
+              height: calc(100vw * 300 / 375);
+            }
+          }
+        }
+      }
+    }
+  }
+}

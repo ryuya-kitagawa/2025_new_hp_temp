@@ -1,0 +1,125 @@
+@use "../global" as g;
+
+/* ======================================================================
+ base
+====================================================================== */
+html {
+  font-size: 62.5%; // 1em = 10px
+}
+
+body {
+  color: g.$black;
+  font-family: g.$font_1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  position: relative;
+
+  &.u_body_fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  &.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* h1 - h6 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+}
+
+/* a */
+// 各ページで色を変更するときは@include a_tagを使用して上書きしてください。
+a {
+  text-decoration: none;
+
+  &:link {
+    cursor: pointer;
+  }
+
+  &:visited {}
+
+  &:hover {}
+
+  &:active {}
+}
+
+// モバイル時 電話番号カラー
+a[href^="tel"] {
+  color: g.$black;
+}
+
+/* Text Highlight */
+// ::selection {
+//   background-color: $color_1;
+// }
+
+/* button */
+button {
+  display: block;
+}
+
+textarea {
+  resize: vertical;
+}
+
+picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+select {
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 g.$base_font;
+  }
+}
+
+/* placeholder */
+// 各ページで色を変更するときは@include placeholderを使用して上書きしてください。
+input,
+textarea {
+  @include g.placeholder(g.$base_font);
+
+  &:focus {
+    @include g.placeholder(g.$base_font);
+  }
+}
+
+// ドラッグ禁止
+img {
+  max-width: 100%;
+  pointer-events: none;
+  user-select: none;
+
+  @include g.mq_max(768) {
+    height: auto;
+  }
+}

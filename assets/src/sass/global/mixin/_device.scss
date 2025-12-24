@@ -1,0 +1,68 @@
+@use "../setting" as *;
+
+//=================================
+// device
+//=================================
+@mixin pc {
+  @media screen and (min-width: $pc_bp) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: $sp_bp) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media screen and (min-width: ($sp_bp + 1px)) and (max-width: ($pc_bp - 1px)) {
+    @content;
+  }
+}
+
+@mixin mq($min_width, $max_width) {
+  @media screen and (min-width: ($min_width + px)) and (max-width: ($max_width + px)) {
+    @content;
+  }
+}
+
+@mixin mq_min($width) {
+  @media screen and (min-width: ($width + px)) {
+    @content;
+  }
+}
+
+@mixin mq_max($width) {
+  @media screen and (max-width: ($width + px)) {
+    @content;
+  }
+}
+
+@mixin pc_tab {
+  @media screen and (min-width: ($sp_bp + 1px)) {
+    @content;
+  }
+}
+
+@mixin sp_tab {
+  @media screen and (max-width: ($pc_bp - 1px)) {
+    @content;
+  }
+}
+
+@mixin pc_content {
+  @media screen and (min-width: $pc_bp) and (max-width: $content_width) {
+    @content;
+  }
+}
+
+//=================================
+// usage
+//=================================
+// .foo {
+//   font-size: 21px;
+//   @include sp {
+//    font-size: 16px;
+//   }
+// }

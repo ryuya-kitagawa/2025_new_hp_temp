@@ -1,0 +1,47 @@
+//=================================
+// rem
+//=================================
+@function rem($px, $base: 16px) {
+  $value: $px;
+
+  // 単位がpx以外の場合は警告を出してそのまま返す
+  @if (unit($px) !='px') {
+    @warn 'rem()の引数にpx以外の値を指定しても計算できません';
+    @return $value;
+  }
+
+  $value: (
+    strip-unit($px) / strip-unit($base)) * 1rem;
+
+  @return $value;
+}
+
+//=================================
+// usage
+//=================================
+// .foo {
+//   font-size: rem(36px);
+// }
+
+// .bar {
+//   font-size: rem(36px, 12px);
+// }
+
+// .baz {
+//   font-size: rem(1.5em);
+// }
+
+//=================================
+// output
+//=================================
+// .foo {
+//   font-size: 2.25rem;
+// }
+
+// .bar {
+//   font-size: 3rem;
+// }
+
+// .baz {
+//   font-size: 1.5em;
+// }

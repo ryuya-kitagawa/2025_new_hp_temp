@@ -1,0 +1,178 @@
+@use "../global" as g;
+
+/*
+ * 変数 (任意で設定してください)
+ */
+$main-color: #333; // メニューの文字色など
+$sp-breakpoint: 767px; // SPとPCの切り替えブレイクポイント
+
+/*
+ * ハンバーガーメニューボタンのスタイル (.openbtn4)
+ */
+.openbtn4 {
+    /* SPでのみ表示 */
+    display: none;
+
+    @include g.sp {
+        display: block;
+        position: fixed;
+        /* 固定位置に配置 */
+        top: calc(100vw * 0 / 375);
+        /* 調整してください */
+        right: calc(100vw * 10 / 375);
+        /* 調整してください */
+        z-index: 9999;
+        cursor: pointer;
+        width: calc(100vw * 40 / 375);
+        height: calc(100vw * 40 / 375);
+        pointer-events: auto;
+        touch-action: manipulation;
+    }
+}
+
+.openbtn4 span {
+    display: block;
+    height: 3px;
+    background: $main-color;
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    transition: all .4s;
+    border-radius: 4px;
+}
+
+.openbtn4 span:nth-child(1) {
+    top: 30%;
+}
+
+.openbtn4 span:nth-child(2) {
+    top: 50%;
+}
+
+.openbtn4 span:nth-child(3) {
+    top: 70%;
+}
+
+/* ハンバーガーメニューオープン時のボタンアニメーション (activeクラス付与時) */
+.openbtn4.active span {
+    background: #fff;
+}
+
+.openbtn4.active span:nth-child(1) {
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+.openbtn4.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.openbtn4.active span:nth-child(3) {
+    top: 50%;
+    transform: rotate(-45deg);
+}
+
+
+/*
+ * SPナビゲーションメニューのスタイル (.l-spnav)
+ */
+.l-spnav {
+    /* SPでのみ表示 */
+    display: none;
+
+    @media screen and (max-width: $sp-breakpoint) {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        /* 画面全体 */
+        background: #2c2c2c;
+        /* 半透明の背景 */
+        z-index: 9990;
+        /* ボタンの下 */
+
+        /* 初期状態では画面外に隠す */
+        transform: translateX(100%);
+        transition: transform 0.6s ease;
+        overflow-y: auto;
+        /* メニューが多い場合にスクロール可能に */
+        padding-top: 80px;
+        /* ヘッダーの高さなどを考慮して調整 */
+    }
+
+    /* メニューがオープンした状態 (activeクラス付与時) */
+    &.active {
+        transform: translateX(0);
+    }
+
+    .lists {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .items {
+        text-align: center;
+        // border-bottom: 1px solid #eee;
+
+        // &:first-child {
+        //     border-top: 1px solid #eee;
+        // }
+
+        &:last-child {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0 0;
+        }
+    }
+
+    .link {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #fff;
+
+        .en {
+            font-size: 2.1rem;
+            font-weight: bold;
+        }
+
+        .ja {
+            font-size: 1.4rem;
+            margin-top: 3px;
+        }
+
+        &.cta_btn {
+            background: #fff;
+            /* CTAボタンの色 */
+            color: #2c2c2c;
+            font-size: 2.1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 3px #2c2c2c;
+
+            &:active {
+                background: #2c2c2c;
+                color: #fff;
+            }
+
+
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+/*
+ * PCナビゲーションメニューの非表示 (SP時)
+ */
+.l-nav.__pc {
+    @media screen and (max-width: $sp-breakpoint) {
+        display: none;
+    }
+}

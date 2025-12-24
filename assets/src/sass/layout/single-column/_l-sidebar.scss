@@ -1,0 +1,252 @@
+@use "../../global" as g;
+
+.l-two-column {
+    &__side {
+        width: 20%;
+        position: sticky;
+        top: calc(100vw * 78 / 1920);
+        height: fit-content;
+        background: #fff;
+        padding: calc(100vw * 30 / 1920);
+
+        // ============================
+        // SP レイアウト
+        // ============================
+        @include g.sp {
+            width: 100%;
+            position: static;
+            top: auto;
+            height: auto;
+            padding: calc(100vw * 24 / 375);
+            margin-top: calc(100vw * 24 / 375);
+        }
+
+        .c-sidebar {
+            font-size: calc(100vw * 14 / 1920);
+            line-height: 1.7;
+
+            @include g.sp {
+                font-size: calc(100vw * 13 / 375);
+            }
+
+            // ============================
+            // ウィジェット共通
+            // ============================
+            .c-widget {
+                // padding: calc(100vw * 20 / 1920);
+                border-radius: calc(100vw * 8 / 1920);
+                // box-shadow: 0 calc(100vw * 2 / 1920) calc(100vw * 6 / 1920) rgba(0, 0, 0, 0.06);
+                background: #ffffff;
+
+                &+.c-widget {
+                    margin-top: calc(100vw * 20 / 1920);
+
+                    @include g.sp {
+                        margin-top: calc(100vw * 16 / 375);
+                    }
+                }
+
+                &__title {
+                    font-size: calc(100vw * 16 / 1920);
+                    font-weight: 600;
+                    margin: 0 0 calc(100vw * 15 / 1920);
+                    padding-bottom: calc(100vw * 6 / 1920);
+                    border-bottom: 1px solid #e5e5e5;
+
+                    @include g.sp {
+                        font-size: calc(100vw * 15 / 375);
+                        margin-bottom: calc(100vw * 8 / 375);
+                        padding-bottom: calc(100vw * 4 / 375);
+                    }
+                }
+
+                &__list,
+                &__list-posts {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                &__list li,
+                &__list-posts li {
+                    margin: calc(100vw * 8 / 1920) 0 0;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    @include g.sp {
+                        margin: calc(100vw * 6 / 375) 0 0;
+                    }
+                }
+
+                &__list a,
+                &__list-posts a {
+                    display: block;
+                    text-decoration: none;
+                    color: #333;
+                    transition: opacity 0.2s ease, transform 0.2s ease;
+
+                    &:hover {
+                        opacity: 0.7;
+                        transform: translateX(calc(100vw * 2 / 1920));
+                    }
+                }
+            }
+
+            // ============================
+            // 検索フォーム
+            // ============================
+            .c-widget--search {
+                .c-search-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(100vw * 10 / 1920);
+
+                    @include g.sp {
+                        gap: calc(100vw * 8 / 375);
+                    }
+
+                    &__input {
+                        width: 100%;
+                        padding: calc(100vw * 10 / 1920) calc(100vw * 12 / 1920);
+                        border-radius: calc(100vw * 4 / 1920);
+                        border: 1px solid #ccc;
+                        font-size: calc(100vw * 14 / 1920);
+
+                        @include g.sp {
+                            font-size: calc(100vw * 13 / 375);
+                            padding: calc(100vw * 10 / 375) calc(100vw * 10 / 375);
+                        }
+                    }
+
+                    &__submit {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        padding: calc(100vw * 10 / 1920);
+                        border-radius: calc(100vw * 999 / 1920);
+                        border: none;
+                        font-size: calc(100vw * 14 / 1920);
+                        font-weight: 600;
+                        cursor: pointer;
+                        background: #333;
+                        color: #fff;
+                        transition: opacity 0.2s ease, transform 0.2s ease;
+
+                        &:hover {
+                            opacity: 0.8;
+                            transform: translateY(calc(100vw * 1 / 1920));
+                        }
+
+                        @include g.sp {
+                            font-size: calc(100vw * 13 / 375);
+                            padding: calc(100vw * 10 / 375);
+                        }
+                    }
+                }
+            }
+
+            // ============================
+            // カテゴリー一覧
+            // ============================
+            .c-widget--category {
+                .c-widget__list {
+                    li {
+                        a {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: calc(100vw * 8 / 1920);
+
+                            @include g.sp {
+                                gap: calc(100vw * 8 / 375);
+                            }
+                        }
+
+                        .count {
+                            font-size: calc(100vw * 12 / 1920);
+                            color: #999;
+
+                            @include g.sp {
+                                font-size: calc(100vw * 11 / 375);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ============================
+            // 人気記事 / 新着記事 共通
+            // ============================
+            .c-widget--popular,
+            .c-widget--new {
+                .c-widget__list-posts {
+                    li a {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: calc(100vw * 10 / 1920);
+
+                        @include g.sp {
+                            gap: calc(100vw * 8 / 375);
+                        }
+                    }
+
+                    .c-widget__thumb {
+                        flex: 0 0 calc(100vw * 80 / 1920);
+                        max-width: calc(100vw * 80 / 1920);
+                        aspect-ratio: 4 / 3;
+                        overflow: hidden;
+                        border-radius: calc(100vw * 4 / 1920);
+                        background: #f5f5f5;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            display: block;
+                        }
+
+                        @include g.sp {
+                            flex: 0 0 calc(100vw * 72 / 375);
+                            max-width: calc(100vw * 72 / 375);
+                        }
+                    }
+
+                    .c-widget__text {
+                        flex: 1 1 auto;
+                        font-size: calc(100vw * 14 / 1920);
+
+                        @include g.sp {
+                            font-size: calc(100vw * 13 / 375);
+                        }
+                    }
+
+                    time {
+                        display: block;
+                        margin-top: calc(100vw * 4 / 1920);
+                        font-size: calc(100vw * 12 / 1920);
+                        color: #999;
+
+                        @include g.sp {
+                            margin-top: calc(100vw * 4 / 375);
+                            font-size: calc(100vw * 11 / 375);
+                        }
+                    }
+                }
+            }
+
+            // ============================
+            // 新着記事のみ（サムネ無し構成に最適化）
+            // ============================
+            .c-widget--new {
+                .c-widget__list-posts {
+                    li a {
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}

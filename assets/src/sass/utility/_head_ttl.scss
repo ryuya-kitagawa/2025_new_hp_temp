@@ -1,0 +1,90 @@
+@use "../global" as g;
+
+.u_head_ttl_01 {
+  position: absolute;
+  top: 50%;
+  left: calc(100vw * 200 / 1920);
+  transform: translateY(-50%);
+
+  @include g.sp {
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .en {
+    font-family: "Montserrat", sans-serif;
+    font-size: calc(100vw * 72 / 1920);
+    font-weight: 900;
+    color: #fff;
+
+    @include g.sp {
+      font-size: calc(100vw * 24 / 375);
+    }
+  }
+
+  .ja {
+    font-size: calc(100vw * 32 / 1920);
+    font-weight: 500;
+    color: #fff;
+    margin: calc(100vw * 10 / 1920) 0 0;
+
+    @include g.sp {
+      font-size: calc(100vw * 18 / 375);
+    }
+  }
+}
+
+.u_head_ttl_02 {
+  .en {
+    font-family: "Montserrat", sans-serif;
+    font-size: calc(100vw * 64 / 1920);
+    font-weight: 900;
+    color: #2c2c2c;
+
+    @include g.sp {
+      font-size: calc(100vw * 32 / 375);
+    }
+  }
+
+  .ja {
+    font-size: calc(100vw * 24 / 1920);
+    font-weight: 500;
+    color: #2c2c2c;
+    margin: calc(100vw * 10 / 1920) 0 0;
+    color: #2c2c2c;
+
+    @include g.sp {
+      font-size: calc(100vw * 21 / 375);
+    }
+  }
+}
+
+.u_head_ttl_02_center {
+  .en {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-size: calc(100vw * 64 / 1920);
+    font-weight: 900;
+    color: #2c2c2c;
+    text-align: center;
+
+    @include g.sp {
+      font-size: calc(100vw * 32 / 375);
+    }
+  }
+
+  .ja {
+    display: block;
+    font-size: calc(100vw * 24 / 1920);
+    font-weight: 500;
+    color: #2c2c2c;
+    margin: calc(100vw * 10 / 1920) 0 0;
+    text-align: center;
+
+    @include g.sp {
+      font-size: calc(100vw * 21 / 375);
+    }
+  }
+}

@@ -1,0 +1,83 @@
+//=================================
+// aspect-ratio
+//=================================
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: '';
+    float: left;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &> :first-child {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+//=================================
+// usage
+//=================================
+// 1.第1引数に横幅（width）を指定
+// 2.第2引数に縦幅（height）を指定
+// css ----------------------------
+// .photo {
+//   画像を16:9にトリミングして縦横比を常に保つ
+//   @include aspect-ratio(16, 9);
+
+//   &>.image {
+//     @include object-fit(cover);
+//   }
+// }
+// html ---------------------------
+// <figure class="photo">
+//   <img class="image"
+//       src="sample.jpg"
+//       alt="画面幅に合わせて可変させたい画像"
+//       width="480"
+//       height="297"
+//       decoding="async">
+// </figure>
+// --------------------------------
+
+//=================================
+// output
+//=================================
+// .photo {
+//   position: relative;
+// }
+
+// .photo::before {
+//   content: '';
+//   float: left;
+//   padding-top: 56.25%;
+// }
+
+// .photo::after {
+//   content: '';
+//   display: block;
+//   clear: both;
+// }
+
+// .photo> :first-child {
+//   height: 100%;
+//   left: 0;
+//   position: absolute;
+//   top: 0;
+//   width: 100%;
+// }
+
+// .photo>.image {
+//   object-fit: cover;
+//   font-family: 'object-fit: cover', sans-serif;
+// }

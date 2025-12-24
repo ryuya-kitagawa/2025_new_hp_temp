@@ -1,0 +1,48 @@
+//=================================
+// object fit images
+//=================================
+@mixin object-fit($value: fill, $position: null) {
+  object-fit: $value;
+
+  @if $position {
+    object-position: $position;
+    font-family: 'object-fit: #{$value}; object-position: #{$position}',
+    sans-serif;
+  }
+
+  @else {
+    font-family: 'object-fit: #{$value}',
+    sans-serif;
+  }
+}
+
+//=================================
+// usage
+//=================================
+// 1.第1引数にobject-fitの値を指定（デフォルト値は初期値のfillを指定）
+// 2.第2引数に使う必要があるのならobject-positionの値を指定
+// --------------------------------
+// .photo__image {
+//   &.-image1 {
+//     @include object-fit(cover);
+//   }
+
+//   &.-image2 {
+//     @include object-fit(contain, top center);
+//   }
+// }
+// --------------------------------
+
+//=================================
+// output
+//=================================
+// .photo__image.-image1 {
+//   font-family: 'object-fit: cover', sans-serif;
+//   object-fit: cover;
+// }
+
+// .photo__image.-image2 {
+//   font-family: 'object-fit: contain; object-position: top center', sans-serif;
+//   object-fit: contain;
+//   object-position: top center;
+// }

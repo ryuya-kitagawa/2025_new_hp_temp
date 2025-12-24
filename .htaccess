@@ -1,0 +1,68 @@
+# node_modulesへのアクセスをブロック（セキュリティ対策）
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^node_modules/ - [F,L]
+</IfModule>
+
+# 開発用ファイルへのアクセスをブロック
+<FilesMatch "^(package\.json|package-lock\.json|vite\.config\.js|postcss\.config\.js|\.gitignore)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ソースファイルへの直接アクセスをブロック（オプション）
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^assets/src/ - [F,L]
+</IfModule>
+
+# ======================================================================
+# 静的アセットのキャッシュ設定（PageSpeed Insights対応）
+# ======================================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # CSS / JavaScript / Source Maps
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/json "access plus 1 year"
+  
+  # 画像
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  
+  # フォント
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/font-sfnt "access plus 1 year"
+  ExpiresByType font/eot "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # assets/dist/ 配下の静的ファイルに長期キャッシュヘッダーを付与
+  <FilesMatch "\.(css|js|mjs|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|eot)$">
+    <If "%{REQUEST_URI} =~ m#/assets/dist/#">
+      Header set Cache-Control "public, max-age=31536000, immutable"
+    </If>
+  </FilesMatch>
+</IfModule>
+

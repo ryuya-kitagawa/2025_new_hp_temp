@@ -1,0 +1,53 @@
+//=================================
+// line-clamp
+//=================================
+@mixin line-clamp($count: 3) {
+
+  // 引数が数値以外だったらエラーを返す
+  @if type-of($count) !='number' {
+    @error 'line-clampの引数は必ず数値で指定してください';
+  }
+
+  @if $count ==1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+//=================================
+// usage
+//=================================
+// 文章の行数を制限して三点リーダーを表示する
+// --------------------------------
+// .foo {
+//   @include line-clamp(1);
+// }
+
+// .bar {
+//   @include line-clamp(4);
+// }
+// --------------------------------
+
+//=================================
+// output
+//=================================
+// .foo {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+
+// .bar {
+//   -webkit-box-orient: vertical;
+//   display: -webkit-box;
+//   -webkit-line-clamp: 4;
+//   overflow: hidden;
+// }

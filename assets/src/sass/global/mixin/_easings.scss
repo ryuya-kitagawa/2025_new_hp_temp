@@ -1,0 +1,28 @@
+@use "../setting" as *;
+//=================================
+// ease
+//=================================
+@function ease($easing) {
+  @if map-has-key($easings, $easing) {
+    @return map-get($easings, $easing);
+  }
+
+  // 定義されていないイージングが指定された時は警告を出して初期値のeaseを返す
+  @warn 'イージング"#{$easing}"は定義されていません';
+  @return ease;
+}
+
+//=================================
+// usage
+//=================================
+// .foo {
+//   animation: animation-foo 1s ease(out-expo) .4s both;
+// }
+
+// .bar {
+//   animation: animation-bar 1s ease(in-out-circ) .4s both;
+// }
+
+// .baz {
+//   animation: animation-baz 1s ease(a) .4s both;
+// }

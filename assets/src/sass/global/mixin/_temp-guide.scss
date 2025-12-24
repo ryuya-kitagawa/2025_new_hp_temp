@@ -1,0 +1,19 @@
+@use "../setting/color-asset" as *;
+//=================================
+// temp-guide
+//=================================
+@mixin temp-guide($str:"テキストが入ります。", $bg:$baseabg, $font:$base_font, $pos_top:1%, $pos_left:1%) {
+  position: relative;
+  background: $bg;
+  &::before {
+    content: $str;
+    position: absolute;
+    top: $pos_top;
+    left: $pos_left;
+    // transform: translate(-50%,-50%);
+    font-size: 2.1rem;
+    color: $font;
+    font-weight: bold;
+    z-index: 9;
+  }
+}

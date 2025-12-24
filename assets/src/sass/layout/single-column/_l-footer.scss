@@ -1,0 +1,256 @@
+@use "../../global" as g;
+
+// ======================================================================
+// footer nav
+// ======================================================================
+
+.l-footer {
+  background: #2c2c2c;
+
+  .inner {
+    display: flex;
+    min-height: calc(100vw * 300 / 1920);
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: calc(100vw * 100 / 1920) calc(100vw * 50 / 1920) 0;
+
+    @include g.sp {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px 0;
+      min-height: auto;
+    }
+
+    .logo {
+      width: calc(100vw * 268 / 1920);
+      height: auto;
+
+      @include g.sp {
+        width: calc(50% - 8px);
+        max-width: 260px;
+        margin: 0 0 24px;
+      }
+    }
+
+    .l-nav-fot {
+      min-height: calc(100vw * 300 / 1920);
+
+      .lists {
+        display: flex;
+        gap: calc(100vw * 50 / 1920);
+
+        @include g.sp {
+          flex-wrap: wrap;
+          row-gap: 16px;
+          column-gap: 16px;
+        }
+
+        .items {
+          box-sizing: border-box;
+          transition: all ease-in-out .3s;
+
+          // ★ SP時は2列表示
+          @include g.sp {
+            width: calc(50% - 8px);
+          }
+
+          // 親ホバーでは何もしない（子までまとめて薄くならないように）
+          &:hover {
+            opacity: 1;
+
+            &.__cta {
+              opacity: 1;
+            }
+          }
+
+          // ---- 共通リンク ----
+          >.link {
+            display: inline-block;
+            transition: opacity .3s ease-in-out;
+
+            @include g.sp {
+              display: block;
+            }
+
+            &:hover {
+              opacity: .7;
+            }
+
+            .en {
+              color: #fff;
+              font-size: calc(100vw * 32 / 1920);
+              font-weight: 900;
+
+              @include g.sp {
+                font-size: 14px;
+              }
+            }
+
+            .ja {
+              color: #fff;
+              font-size: calc(100vw * 18 / 1920);
+              font-weight: 400;
+              margin: calc(100vw * 10 / 1920) 0 0;
+
+              @include g.sp {
+                font-size: 12px;
+                margin: calc(100vw * 5 / 375) 0 0;
+              }
+            }
+
+            &.cta_btn {
+              display: block;
+              width: calc(100vw * 254 / 1920);
+              height: calc(100vw * 68 / 1920);
+              background: #fff;
+              border-radius: calc(100vw * 72 / 1920);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              box-sizing: border-box;
+              border: solid #2c2c2c 3px;
+              transition: all ease-in-out .3s;
+
+              i {
+                font-size: calc(100vw * 20 / 1920);
+                color: #fff;
+                margin: 0 calc(100vw * 10 / 1920) 0 0;
+              }
+
+              .ja {
+                font-size: calc(100vw * 24 / 1920);
+                font-weight: 700;
+                color: #fff;
+                margin: 0;
+              }
+
+              &:hover {
+                background: #2c2c2c;
+                color: #fff;
+
+                i,
+                .ja {
+                  color: #fff;
+                }
+              }
+            }
+          }
+
+          // ---- Service 親子メニュー ----
+          &.has-children {
+            .child_lists {
+              margin: 12px 0 0;
+              padding: 0;
+              list-style: none;
+
+              @include g.sp {
+                margin-top: 8px;
+              }
+
+              .child_item {
+                margin: 4px 0 0;
+
+                .link {
+                  // ★ PCインデント10px / SPは16px
+                  display: block;
+                  padding-left: calc(100vw * 10 / 1920);
+                  color: #fff;
+                  margin: calc(100vw * 10 / 1920);
+
+                  @include g.sp {
+                    padding-left: calc(100vw * 16 / 375);
+                  }
+
+                  .en {
+                    font-size: calc(100vw * 20 / 1920);
+                    font-weight: 700;
+
+                    @include g.sp {
+                      font-size: 13px;
+                    }
+                  }
+
+                  .ja {
+                    font-size: calc(100vw * 14 / 1920);
+
+                    @include g.sp {
+                      font-size: 11px;
+                    }
+                  }
+
+                  // 子自身のホバー（親とは独立）
+                  &:hover {
+                    opacity: .7;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ._copy {
+    color: #fff;
+    font-size: calc(100vw * 20 / 1920);
+    text-align: center;
+    padding: 10px 0 20px;
+
+    @include g.sp {
+      font-size: 12px;
+      padding: 16px 0 24px;
+    }
+  }
+
+  // フッターコピーライト部分の改善
+  .copy_box {
+    text-align: center;
+    padding: 20px 0;
+
+    @include g.sp {
+      padding: 16px 0 24px;
+    }
+
+    .link_box {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 10px;
+
+      @include g.sp {
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      a.botlink {
+        // コントラスト改善: 明るい色に変更
+        color: #ffffff;
+        text-decoration: none;
+        font-size: calc(100vw * 14 / 1920);
+        
+        // タッチターゲットサイズ改善
+        display: inline-block;
+        min-height: 24px;
+        padding: 8px 12px;
+        line-height: 1.5;
+        transition: opacity 0.3s ease-in-out;
+
+        @include g.sp {
+          font-size: 10px;
+          padding: 6px 10px;
+          min-height: 24px;
+        }
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:focus {
+          outline: 2px solid #ffffff;
+          outline-offset: 2px;
+        }
+      }
+    }
+  }
+}

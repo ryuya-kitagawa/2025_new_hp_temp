@@ -1,0 +1,354 @@
+@use "../../global" as g;
+
+// ======================================================================
+// single-column-header
+// ======================================================================
+.l-header {
+  width: 100%;
+  position: fixed;
+  background: #f2f2f3;
+  z-index: 9999999;
+
+  // ヘッダー自体は背景や影だけトランジション
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(100vw * 50 / 1920) calc(100vw * 100 / 1920) 0;
+    transition: padding 0.3s ease-in-out;
+
+    @include g.sp {
+      position: relative;
+      padding: calc(100vw * 10 / 375) calc(100vw * 10 / 375);
+    }
+
+    .logo {
+      width: calc(100vw * 330 / 1920);
+      height: auto;
+      transition: width 0.3s ease-in-out;
+
+      @include g.sp {
+        width: calc(100vw * 130 / 375);
+      }
+    }
+
+    .l-nav {
+      .lists {
+        display: flex;
+        gap: calc(100vw * 50 / 1920);
+        transition: gap 0.3s ease-in-out;
+
+        .items {
+          box-sizing: border-box;
+          transition: all ease-in-out 0.3s;
+
+          &:hover {
+            opacity: 0.7;
+
+            &.__cta {
+              opacity: 1;
+            }
+          }
+
+          .link {
+            .en {
+              color: #2c2c2c;
+              font-size: calc(100vw * 28 / 1920);
+              font-weight: 900;
+            }
+
+            .ja {
+              color: #2c2c2c;
+              font-size: calc(100vw * 16 / 1920);
+              font-weight: 400;
+              margin: calc(100vw * 10 / 1920) 0 0;
+              transition: margin 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+            }
+
+            &.cta_btn {
+              display: block;
+              width: calc(100vw * 250 / 1920);
+              height: calc(100vw * 68 / 1920);
+              border-radius: calc(100vw * 72 / 1920);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              box-sizing: border-box;
+              border: solid #2c2c2c calc(100vw * 3 / 1920);
+              transition: all ease-in-out 0.3s;
+
+              i {
+                font-size: calc(100vw * 20 / 1920);
+                color: #2c2c2c;
+                margin: 0 calc(100vw * 10 / 1920) 0 0;
+              }
+
+              .ja {
+                font-size: calc(100vw * 24 / 1920);
+                font-weight: 700;
+                color: #2c2c2c;
+                margin: 0;
+              }
+
+              &:hover {
+                background: #2c2c2c;
+                color: #fff;
+
+                i,
+                .ja {
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &._white {
+    background: #ffffff0d;
+    width: 100%;
+    height: calc(100vw * 68 / 1920);
+    border-bottom: solid 1px #fff;
+    color: #fff;
+
+    &_bg {
+      background: #2c2c2c;
+      width: 100%;
+      height: calc(100vw * 68 / 1920);
+
+      @include g.sp {
+        height: calc(100vw * 50 / 375);
+      }
+
+      .inner {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        padding-inline: calc(100vw * 100 / 1920);
+
+        @include g.sp {
+          padding-inline: calc(100vw * 10 / 375);
+        }
+
+        .openbtn4 span {
+          background: #fff;
+        }
+
+        .logo {
+          width: calc(100vw * 196 / 1920);
+          height: auto;
+
+          @include g.sp {
+            width: calc(100vw * (196 / 2) / 375);
+          }
+        }
+
+        .l-nav {
+          .lists {
+            gap: calc(100vw * 15 / 1920);
+            align-items: center;
+
+            .items {
+              &.__cta {
+                .cta_btn {
+                  width: calc(100vw * 163 / 1920);
+                  height: calc(100vw * 44 / 1920);
+                  background: none;
+                  border: solid #fff calc(100vw * 3 / 1920);
+
+                  i {
+                    font-size: calc(100vw * 15 / 1920);
+                    color: #fff;
+                    margin: 0 calc(100vw * 10 / 1920) 0 0;
+                  }
+
+                  .ja {
+                    font-size: calc(100vw * 18 / 1920);
+                    font-weight: 700;
+                    color: #fff;
+                    margin: 0;
+                  }
+
+                  &:hover {
+                    background: #2c2c2c;
+                    color: #fff;
+                    border: solid #2c2c2c calc(100vw * 3 / 1920);
+
+                    i,
+                    .ja {
+                      color: #fff;
+                    }
+                  }
+                }
+              }
+
+              .link {
+                .ja {
+                  margin: 0;
+                  font-weight: 700;
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include g.sp {
+      height: calc(100vw * 50 / 375);
+    }
+
+    .inner {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      padding-inline: calc(100vw * 100 / 1920);
+
+      @include g.sp {
+        padding-inline: calc(100vw * 10 / 375);
+      }
+
+      .openbtn4 span {
+        background: #fff;
+      }
+
+      .logo {
+        width: calc(100vw * 196 / 1920);
+        height: auto;
+
+        @include g.sp {
+          width: calc(100vw * (196 / 2) / 375);
+        }
+      }
+
+      .l-nav {
+        .lists {
+          gap: calc(100vw * 15 / 1920);
+          align-items: center;
+
+          .items {
+            &.__cta {
+              .cta_btn {
+                width: calc(100vw * 163 / 1920);
+                height: calc(100vw * 44 / 1920);
+                background: none;
+                border: solid #fff calc(100vw * 3 / 1920);
+
+                i {
+                  font-size: calc(100vw * 15 / 1920);
+                  color: #fff;
+                  margin: 0 calc(100vw * 10 / 1920) 0 0;
+                }
+
+                .ja {
+                  font-size: calc(100vw * 18 / 1920);
+                  font-weight: 700;
+                  color: #fff;
+                  margin: 0;
+                }
+
+                &:hover {
+                  background: #2c2c2c;
+                  color: #fff;
+                  border: solid #2c2c2c calc(100vw * 3 / 1920);
+
+                  i,
+                  .ja {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+
+            .link {
+              .ja {
+                margin: 0;
+                font-weight: 700;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &._scrolled {
+    height: calc(100vw * 68 / 1920);
+
+    .inner {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      padding-inline: calc(100vw * 100 / 1920);
+
+      .logo {
+        width: calc(100vw * 196 / 1920);
+        height: auto;
+      }
+
+      .l-nav {
+        .lists {
+          gap: calc(100vw * 15 / 1920);
+          align-items: center;
+
+          .items {
+            .en {
+              display: none;
+            }
+
+            &.__cta {
+              .cta_btn {
+                width: calc(100vw * 163 / 1920);
+                height: calc(100vw * 44 / 1920);
+                background: none;
+                border: solid #2c2c2c calc(100vw * 3 / 1920);
+
+                i {
+                  font-size: calc(100vw * 15 / 1920);
+                  color: #2c2c2c;
+                  margin: 0 calc(100vw * 10 / 1920) 0 0;
+                }
+
+                .ja {
+                  font-size: calc(100vw * 18 / 1920);
+                  font-weight: 700;
+                  color: #2c2c2c;
+                  margin: 0;
+                }
+
+                &:hover {
+                  background: #2c2c2c;
+                  color: #fff;
+                  border: solid #2c2c2c calc(100vw * 3 / 1920);
+
+                  i,
+                  .ja {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+
+            .link {
+              .ja {
+                margin: 0;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &._scrolled-sub {
+    background: #2c2c2c;
+    border-bottom: solid 1px #2c2c2c;
+  }
+}

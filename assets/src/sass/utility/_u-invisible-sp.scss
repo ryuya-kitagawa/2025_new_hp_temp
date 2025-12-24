@@ -1,0 +1,36 @@
+@use "../global" as g;
+
+$display-value: block;
+$display-value-flex: flex;
+
+.u-pc {
+  display: $display-value;
+
+  @include g.sp {
+    display: none;
+  }
+}
+
+.u-sp {
+  display: none;
+
+  @include g.sp {
+    display: $display-value;
+  }
+}
+
+.u-pc-flex {
+  display: $display-value-flex ;
+
+  @include g.sp {
+    display: none !important;
+  }
+}
+
+.u-sp-flex {
+  display: none !important;
+
+  @include g.sp {
+    display: $display-value-flex !important;
+  }
+}

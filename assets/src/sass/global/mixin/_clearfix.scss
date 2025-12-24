@@ -1,0 +1,34 @@
+//=================================
+// clearfix
+//=================================
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+//=================================
+// usage
+//=================================
+// .list {
+//   @include clearfix();
+
+//   &>.item {
+//     float: left;
+//   }
+// }
+
+//=================================
+// output
+//=================================
+// .list::after {
+//   clear: both;
+//   content: '';
+//   display: block;
+// }
+
+// .list>.item {
+//   float: left;
+// }

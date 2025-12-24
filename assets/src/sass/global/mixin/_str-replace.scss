@@ -1,0 +1,37 @@
+//=================================
+// str-replace
+//=================================
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+//=================================
+// usage
+//=================================
+// 1.第1引数に検索対象を指定
+// 2.第2引数に置換したいワードを指定
+// 3.第3引数に置換後のワードを指定
+// --------------------------------
+// .message {
+//   &::before {
+//     // 疑似要素内で改行を行うために' 'を\Aに置換する
+//     content: str-replace('今年もありがとうございました。 来年もよろしく。', ' ', '\A');
+//     white-space: pre;
+//   }
+// }
+// --------------------------------
+
+//=================================
+// output
+//=================================
+// .message::before {
+//   content: '今年もありがとうございました。\a来年もよろしく。';
+//   white-space: pre;
+// }

@@ -1,0 +1,46 @@
+@use "../setting/color" as *;
+@use "sass:color";
+
+//=================================
+// base color asset
+//=================================
+//---------------------------------
+// change variable
+// $b_blue, $b_darkblue, $b_red, $b_pink, $b_orange,$b_green $b_silver
+$base: #0043B0;
+//---------------------------------
+// change variable
+$theme: $t_light;
+//---------------------------------
+
+// color assets
+//---------------------------------
+$basea: rgba($base, 0.77);
+$baseabg: rgba($base, 0.16);
+
+// darken($base, 20%)
+$base_hover: color.adjust($base, $lightness: -20%);
+
+$base_font: $theme;
+
+// invert($base_font)
+$base_font_reverse: color.invert($base_font);
+
+// complement($base)
+$base_reverse: color.complement($base);
+
+// darken(complement($base), 20%)
+$base_reverse_hover: color.adjust(color.complement($base), $lightness: -20%);
+
+//---------------------------------
+$base_bg: $theme;
+
+// darken($theme, 1%)
+$base_bg_even: color.adjust($theme, $lightness: -1%);
+
+$accent_bg: #2C343E;
+$base_inner_bg: #F6F8F8;
+
+// invert(lighten($theme, 10%))
+$base_bg_color: color.invert(color.adjust($theme, $lightness: 10%));
+//---------------------------------

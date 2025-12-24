@@ -1,0 +1,45 @@
+//=================================
+// css hack
+//=================================
+// Chrome(and Safari, Opera)
+@mixin chrome {
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @content;
+  }
+}
+
+// FireFox
+@mixin firefox {
+
+  _:lang(x)::-moz-placeholder,
+  & {
+    @content;
+  }
+}
+
+// Edge
+@mixin edge {
+
+  _:lang(x)::-ms-,
+  & {
+    @content;
+  }
+}
+
+// IE(11)
+@mixin ie {
+
+  _:-ms-lang(x)::-ms-backdrop,
+  & {
+    @content;
+  }
+}
+
+// Safari
+@mixin safari {
+
+  _:lang(x)+_:-webkit-full-screen-document,
+  & {
+    @content;
+  }
+}

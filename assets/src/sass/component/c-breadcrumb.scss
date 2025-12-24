@@ -1,0 +1,78 @@
+@use "../global" as g;
+
+/* ===================================== */
+/* 1. 全体と基本配置 (l-breadcrumbs, breadcrumb) */
+/* ===================================== */
+.l-breadcrumbs {
+  padding: 10px 0;
+  margin: 10px 0;
+
+  @include g.sp {
+    padding: 8px 0;
+    margin: 8px 0;
+  }
+}
+
+.breadcrumb {
+  font-size: calc(100vw * 24 / 1920);
+  color: #666;
+  padding: 0 15px;
+
+  @include g.sp {
+    font-size: calc(100vw * 14 / 375);
+    padding: 0 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+/* ===================================== */
+/* 2. リンクとセパレーター */
+/* ===================================== */
+
+.breadcrumb span {
+  white-space: nowrap;
+
+  @include g.sp {
+    display: inline-block;
+  }
+}
+
+/* リンク（aタグ）のスタイル */
+.breadcrumb a {
+  color: #337ab7;
+  /* リンクのデフォルト色 */
+  text-decoration: none;
+  /* 下線を非表示 */
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: #1a568c;
+  /* ホバー時の色 */
+  text-decoration: underline;
+}
+
+/* セパレーター（区切り文字）のスタイル */
+.breadcrumb .separator {
+  padding: 0 5px;
+  /* 左右にスペースを挿入 */
+  color: #999;
+  /* セパレーターの色を少し薄く */
+}
+
+/* ===================================== */
+/* 3. 現在地 (最後の要素) */
+/* ===================================== */
+
+/* 最後のspan要素（現在のページタイトル） */
+.breadcrumb span:last-child {
+  font-weight: bold;
+  /* 太字にする */
+  color: #333;
+  /* 濃い文字色にする */
+}

@@ -1,0 +1,63 @@
+@use "../global" as g;
+
+// ======================================================================
+// p-404
+// ======================================================================
+
+.p-404 {
+  .l-main {
+    .l-contents {
+      .l-sec {
+
+        &.l-404 {
+          padding: 0 0 calc(100vw * 200 / 1920);
+          padding-inline: calc(100vw * 200 / 1920);
+
+          @include g.sp {
+            padding: 0 0 calc(100vw * 50 / 375);
+            padding-inline: calc(100vw * 16 / 375);
+          }
+          h1 {
+            font-size: calc(100vw * 64 / 1920);
+            font-weight: 700;
+            text-align: center;
+            @include g.sp {
+              font-size: calc(100vw * 28 / 375);
+            }
+          }
+          p {
+            font-size: calc(100vw * 32 / 1920);
+            font-weight: 500;
+            text-align: center;
+            margin: calc(100vw * 30 / 1920) 0 0;
+            @include g.sp {
+              font-size: calc(100vw * 18 / 375);
+              margin: calc(100vw * 15 / 375) 0 0;
+            }
+          }
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #2c2c2c;
+            color: #fff;
+            font-size: calc(100vw * 24 / 1920);
+            font-weight: 700;
+            width: calc(100vw * 270 / 1920);
+            height: calc(100vw * 55 / 1920);
+            margin: calc(100vw * 30 / 1920) auto 0;
+            border-radius: calc(100vw * 28 / 1920);
+            @include g.sp {
+              font-size: calc(100vw * 14 / 375);
+              font-weight: 700;
+              width: calc(100vw * 200 / 375);
+              height: calc(100vw * 45 / 375);
+              margin: calc(100vw * 20 / 375) auto 0;
+              border-radius: calc(100vw * 28 / 375);
+            }
+          }
+        }
+      }
+    }
+  }
+}
