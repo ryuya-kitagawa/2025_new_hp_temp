@@ -1,40 +1,50 @@
 @use "../../global" as g;
+
 // ======================================================================
-// single-column-header
+// l-main - メインコンテンツ
 // ======================================================================
 
 .l-wrapper {
-  background: #F2F2F3;
-  color: #2c2c2c;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding-top: 80px; // ヘッダーの高さ分
+
+  @include g.sp {
+    padding-top: 60px;
+  }
 
   .l-main {
     .l-contents {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+
+      @include g.sp {
+        padding: 1rem;
+      }
+
       .l-sec {
-        margin: calc(100vw * 200 / 1920) 0 0;
-        padding-inline: calc(100vw * 200 / 1920);
+        margin: 3rem 0 0;
 
         @include g.sp {
-          margin: calc(100vw * 50 / 375) 0 0;
-          padding-inline: calc(100vw * 16 / 375);
+          margin: 2rem 0 0;
         }
       }
 
       .l-lower-mv {
         position: relative;
-        // height: 500px;
+        width: 100%;
+        margin-bottom: 2rem;
 
-        picture {
+        @include g.sp {
+          margin-bottom: 1.5rem;
+        }
 
-          source,
-          img {
-            width: 100%;
-            height: calc(100vw * 500 / 1920);
-            object-fit: cover;
-
-            @include g.sp {
-              height: calc(100vw * 300 / 375);
-            }
-          }
+        picture,
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
         }
       }
     }
