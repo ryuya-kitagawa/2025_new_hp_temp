@@ -1,4 +1,3 @@
-@forward "l-header";
-@forward "l-main";
-@forward "l-sidebar";
-@forward "l-footer";
+@use "l-header";
+@use "l-main";
+@use "l-footer";
