@@ -9,6 +9,7 @@
 $includes = [
   'admin/init.php',
   'admin/functions-util.php',
+  'admin/theme-info.php',
 ];
 
 foreach ($includes as $file) {
